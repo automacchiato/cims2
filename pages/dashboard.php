@@ -57,10 +57,11 @@
   </div>
 </nav>
 
-   <div class="container mt-5 container-full-width">
-   <h2>Dashboard</h2>
+   <div class="container mt-4 container-full-width">
+   <h2>Dashboard</h2> <br>
+   <h4>Item to be Calibrated this Month</h4>
    <?php
-
+  
    //Retrieve items due for calibration this month
    $current_month = date('Y-m');
    $sql = "SELECT * FROM items WHERE calibrationDue LIKE '$current_month%'";
@@ -68,20 +69,22 @@
 
    if (mysqli_num_rows($result) > 0){
       echo "
-      <table>
-         <thead>
+      <table class='table table-bordered table-sm'>
+         <thead class='thead-light'>
             <tr>
+               <th>Process</th>              
+               <th>Equipment Control Number</th>
                <th>Item Name</th>
-               <th>Calibration Due Date</th>
-               <th>Days to Expire</th>               
+               <th>Calibration Due Date</th>            
             </tr>
          </thead>
          <tbody>";
       while ($row = mysqli_fetch_assoc($result)){
          echo "<tr>
+            <td>" . $row['process'] . "</td>
+            <td>" . $row['eqptCtrlNum'] . "</td>
             <td>" . $row['eqptName'] . "</td>
-            <td>" . $row['calibrationDueDate'] . "</td>
-            <td>" . $row['daytoExpire'] . "</td>
+            <td>" . $row['calibrationDue'] . "</td>
             </tr>";
          }
          echo "</tbody>
@@ -89,6 +92,23 @@
      } else {
          echo "No items due for calibration this month.";
      }
+
+     //Calculate daytoDue for existing item
+   $update_sql = "UPDATE items SET daytoDue = ?";
+   $stmt = mysqli_prepare($conn, $update_sql);
+   mysqli_stmt_bind_param($stmt, "i", $dayToDue);
+
+   while ($row = mysqli_fetch_assoc($result)) {
+    $dueDate = new DateTime($row['calibrationDue']);
+    $today = new DateTime();
+    $interval = $today->diff($dueDate);
+    $daytoDue = $interval->days;
+
+    mysqli_stmt_execute($stmt);
+   }
+
+   mysqli_stmt_close($stmt);
+
      ?>
 
    </div>
