@@ -12,6 +12,6 @@ session_unset();
 session_destroy();
 
 // Redirect to login page
-header("Location: dashboard.php");
+header("Location: login.php");
 exit;
 ?>

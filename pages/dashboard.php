@@ -17,12 +17,12 @@
    <title>Dashboard / CIMS</title>
    <link rel="stylesheet" href="../css/style.css">
    <link rel="stylesheet" href="../css/bootstrap.min.css">
-   
+   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Calibration Item Management System</a>
+  <a class="navbar-brand" href="#">CIMS v1</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,22 +33,8 @@
         <a class="nav-link" href="dashboard.php">Dashboard<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">List</a>
+        <a class="nav-link" href="items.php">All Items</a>
       </li>
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
-      </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
     <span class="navbar-text mr-3 text-light">Hi, <?php echo strtok($_SESSION['employeeName'],""); ?></span>

@@ -39,11 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
    <title>Login / CIMS</title>
    <link rel="stylesheet" href="../css/style.css">
    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
-  <span class="navbar-brand mb-0 h1">Calibration Item Management System</span>
+  <span class="navbar-brand mb-0 h1">CIMS v1</span>
 </nav>
 
    <div class="container mt-5 container-full-width">
